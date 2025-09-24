@@ -42,7 +42,6 @@ body {
     backdrop-filter: blur(10px);
     display: none; /* Initially hidden */
     z-index: 1000;
-    display: flex; /* This is what your JS sets to 'flex' */
     justify-content: center;
     align-items: center;
 }
