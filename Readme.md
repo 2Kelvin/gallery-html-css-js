@@ -1,6 +1,6 @@
 #Gallery
 
-A simple gallery built using plain HTML, CSS and JavaScript. 
+A simple **responsive** gallery built using plain HTML, CSS and JavaScript. 
 
 - One can click on a picture to view it in full size.
 
