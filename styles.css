@@ -3,14 +3,22 @@ body {
     margin: 0;
 }
 
+.noScroll {
+    overflow: hidden;
+}
+
 :where(h1) {
   margin-block: 0.67em;
   font-size: 2em;
 }
 
+section h1 {
+    text-align: center;
+}
+
 #allPicturesContainer {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
 }
 

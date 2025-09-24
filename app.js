@@ -35,6 +35,7 @@ allImages.forEach(pictureSrc => { // pictureSrc is the src of each image (as add
     eachImgTag.addEventListener('click', () => {
         fullScreenImage.src = pictureSrc;
         popUpPage.style.display = 'flex'; // making the popUpPage visible to show the fullscreen image
+        document.body.classList.add('noScroll'); // removing scrollbar in fullscreen mode (in popUp page)
     });
 
     allPicturesContainer.appendChild(eachPictureDiv); //appending the imageDiv to allPicturesDiv container div
@@ -43,6 +44,7 @@ allImages.forEach(pictureSrc => { // pictureSrc is the src of each image (as add
 // closing the popUp page from fullscreen mode by updating its display property to none
 closeButton.addEventListener('click', () => {
     popUpPage.style.display = 'none';
+    document.body.classList.remove('noScroll'); // enabling scrollbar after exiting fullscreen mode (popUp page)
 });
 
 // if any other part of the page is clicked, close the popUp page just like you've clicked the close button
@@ -50,6 +52,7 @@ popUpPage.addEventListener('click', (event) => {
     // Checking if the click occurred directly on the popUp page, not on the image
     if (event.target === popUpPage) {
         popUpPage.style.display = 'none';
+        document.body.classList.remove('noScroll'); // enabling scrollbar after exiting fullscreen mode (popUp page)
     }
 });
 
