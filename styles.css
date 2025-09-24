@@ -8,8 +8,8 @@ body {
 }
 
 :where(h1) {
-  margin-block: 0.67em;
-  font-size: 2em;
+    margin-block: 0.67em;
+    font-size: 2em;
 }
 
 section h1 {
@@ -18,8 +18,9 @@ section h1 {
 
 #allPicturesContainer {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
+    /* Start with a 2-column grid for phones */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
 .eachPictureDiv {
@@ -48,67 +49,75 @@ section h1 {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(10px);
-    display: none; /* Initially hidden */
+    display: none;
     z-index: 1000;
     justify-content: center;
     align-items: center;
 }
 
-/*
- * Pop-up Content Container
- * This div holds the image and close button, and its size
- * is defined using flexible units to adapt to the screen.
- */
 #popUpContent {
     position: relative;
-    max-width: 95%; /* Use a percentage to scale with the viewport width */
-    max-height: 95%; /* Use a percentage to scale with the viewport height */
-    /* Ensure content stays centered and flexible */
+    max-width: 95%;
+    max-height: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/*
- * Fullscreen Image Styles
- * This is the most crucial part for responsiveness.
- */
 #fullScreenImage {
-    max-width: 100%; /* Ensures the image never exceeds its parent container's width */
-    max-height: 100%; /* Ensures the image never exceeds its parent container's height */
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain; 
-    /* This is the magic property:
-       - It makes the image scale down to fit inside the container.
-       - It maintains the image's aspect ratio.
-       - The entire image will always be visible, with space on the sides or top/bottom if needed. */
 }
 
-/*
- * Close Button Styles
- * Positioned using percentages or viewport units for responsiveness.
- */
 #closeButton {
     position: absolute;
-    top: 2vw;  /* Use viewport units (2% of viewport width) for responsive positioning */
+    top: 2vw;
     right: 2vw;
     color: #fff;
-    font-size: clamp(2rem, 5vw, 4rem); /* A powerful way to set a minimum, preferred, and maximum font size.
-                                            - min-size: 2rem
-                                            - fluid size: 5vw (5% of viewport width)
-                                            - max-size: 4rem
-                                         This ensures the button is readable on all screens. */
+    font-size: clamp(2rem, 5vw, 4rem);
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    width: clamp(40px, 8vw, 80px); /* Responsive width */
-    height: clamp(40px, 8vw, 80px); /* Responsive height */
+    width: clamp(40px, 8vw, 80px);
+    height: clamp(40px, 8vw, 80px);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    transition: background-color 0.3s ease;
     cursor: pointer;
 }
 
 #closeButton:hover {
     background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
+}
+
+/*
+ * Media Queries for progressively enhancing the layout for larger screens
+ */
+
+/* For larger phones and smaller tablets */
+@media (min-width: 480px) {
+    #allPicturesContainer {
+        /* Change to 3 columns */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+}
+
+/* For tablets and small laptops */
+@media (min-width: 768px) {
+    #allPicturesContainer {
+        /* Change to 4 columns */
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* For desktops and large screens */
+@media (min-width: 1024px) {
+    #allPicturesContainer {
+        /* Change to 6 columns */
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px;
+    }
 }
